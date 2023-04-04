@@ -37,23 +37,23 @@ const Modal: FC<ModalProps> = ({
 
   return (
     <>
-      <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto inset-0 fixed z-50 outline-none focus:outline-none bg-neutral-800 bg-opacity-70">
-        <div className="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-full lg:h-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-neutral-800 bg-opacity-70">
+        <div className="relative w-full h-full mx-auto my-6 lg:w-3/6 lg:max-w-3xl lg:h-auto">
           {/* Content */}
-          <div className="h-full lg:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-black/90 outline-none focus:outline-none">
+          <div className="relative flex flex-col w-full h-full bg-black border-0 rounded-lg shadow-lg outline-none lg:h-auto focus:outline-none">
             {/* Header */}
             <div className="flex items-center justify-between p-10 rounded-t">
               <h3 className="text-3xl font-semibold text-white">{title}</h3>
               <button>
                 <AiOutlineClose
                   size={20}
-                  className="p-1 ml-auto border-0 text-white hover:opacity-70 transition"
+                  className="p-1 ml-auto text-white transition border-0 hover:opacity-70"
                   onClick={handleClose}
                 />
               </button>
             </div>
             {/* Body */}
-            <div className="relative p-10 flex-auto">{body}</div>
+            <div className="relative flex-auto p-10">{body}</div>
             {/* Footer */}
             <div className="flex flex-col gap-2 p-10">
               <Button

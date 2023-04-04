@@ -20,7 +20,12 @@ const Sidebar: FC<SidebarProps> = ({}) => {
       icon: BsBellFill,
       auth: true,
     },
-    { label: "Profile", href: "/users/123", icon: FaUser, auth: true },
+    {
+      label: "Profile",
+      href: `/users/${currentUser?.id}`,
+      icon: FaUser,
+      auth: true,
+    },
   ];
   return (
     <div className="h-full col-span-1 pr-4 md:pr-6">
