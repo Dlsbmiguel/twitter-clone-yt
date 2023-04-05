@@ -72,7 +72,7 @@ const Form: FC<FormProps> = ({ placeholder, isComment, postId }) => {
       ) : (
         <div className="py-8">
           <h1 className="mb-4 text-2xl font-bold text-center text-white">
-            Welcome to Twitter
+            Welcome to Plitter
           </h1>
           <div className="flex flex-row items-center justify-center gap-4">
             <Button label="Login" onClick={loginModal.onOpen} />
