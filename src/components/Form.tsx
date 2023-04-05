@@ -1,5 +1,6 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useLoginModal from "@/hooks/useLoginModal";
+import usePost from "@/hooks/usePost";
 import usePosts from "@/hooks/usePosts";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import axios from "axios";
@@ -20,6 +21,7 @@ const Form: FC<FormProps> = ({ placeholder, isComment, postId }) => {
 
   const { data: currentUser } = useCurrentUser();
   const { mutate: mutatePosts } = usePosts();
+  const { mutate: mutatePost } = usePost(postId as string);
 
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -27,17 +29,21 @@ const Form: FC<FormProps> = ({ placeholder, isComment, postId }) => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
-      await axios.post("/api/posts", { body });
+
+      const url = isComment ? `/api/comments?postId=${postId}` : `/api/posts`;
+
+      await axios.post(url, { body });
       toast.success("Tweet created");
 
       setBody("");
       mutatePosts();
+      mutatePost();
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
-  }, [body, mutatePosts]);
+  }, [body, mutatePosts, isComment, postId, mutatePost]);
   return (
     <div className="px-5 py-2 border-b border-neutral-800">
       {currentUser ? (
@@ -49,6 +55,7 @@ const Form: FC<FormProps> = ({ placeholder, isComment, postId }) => {
             <textarea
               disabled={isLoading}
               onChange={(e) => setBody(e.target.value)}
+              value={body}
               className="disabled:opacity-80 peer resize-none mt-3 w-full bg-black ring-0 outline-none text-[20px] placeholder-neutral-500 text-white"
               placeholder={placeholder}
             ></textarea>

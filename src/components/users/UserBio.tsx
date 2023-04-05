@@ -24,7 +24,7 @@ const UserBio: FC<UserBioProps> = ({ userId }) => {
 
     return format(new Date(fetchedUser.createdAt), "MMMM yyyy");
   }, [fetchedUser]);
-  console.log(isFollowing);
+
   return (
     <div className="pb-4 border-b border-neutral-800">
       <div className="flex justify-end p-2">
