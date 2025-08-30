@@ -7,8 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method !== "POST" && req.method !== "GET") {
-    res.status(405).json({ message: "Method not allowed" });
-    return;
+    return res.status(405).json({ message: "Method not allowed" });
   }
 
   try {
@@ -60,6 +59,6 @@ export default async function handler(
     }
   } catch (error) {
     console.log(error);
-    return res.status(400).end();
+    return res.status(400).json({ error: "Bad request" });
   }
 }
