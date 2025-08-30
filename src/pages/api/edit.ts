@@ -31,9 +31,9 @@ export default async function handler(
       },
     });
 
-    res.status(200).json(updatedUser);
+    return res.status(200).json(updatedUser);
   } catch (error) {
     console.log(error);
-    res.status(400).end();
+    return res.status(400).json({ error: "Bad request" });
   }
 }
