@@ -37,10 +37,10 @@ const Modal: FC<ModalProps> = ({
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none bg-neutral-800 bg-opacity-70">
+      <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-hidden focus:outline-hidden bg-neutral-800/70">
         <div className="relative w-full h-full mx-auto my-6 lg:w-3/6 lg:max-w-3xl lg:h-auto">
           {/* Content */}
-          <div className="relative flex flex-col w-full h-full bg-black border-0 rounded-lg shadow-lg outline-none lg:h-auto focus:outline-none">
+          <div className="relative flex flex-col w-full h-full bg-black border-0 rounded-lg shadow-lg outline-hidden lg:h-auto focus:outline-hidden">
             {/* Header */}
             <div className="flex items-center justify-between p-10 rounded-t">
               <h3 className="text-3xl font-semibold text-white">{title}</h3>

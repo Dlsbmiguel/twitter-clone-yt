@@ -22,6 +22,8 @@ const EditModal: FC<EditModalProps> = ({}) => {
   const [bio, setBio] = useState("");
 
   useEffect(() => {
+    // Seed the editable form fields from the fetched profile.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setProfileImage(currentUser?.profileImage);
     setCoverImage(currentUser?.coverImage);
     setName(currentUser?.name);

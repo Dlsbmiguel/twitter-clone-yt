@@ -3,7 +3,7 @@ import useLike from "@/hooks/useLike";
 import useLoginModal from "@/hooks/useLoginModal";
 import { formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/router";
-import { FC, useCallback, useMemo } from "react";
+import { FC, useCallback } from "react";
 import { AiOutlineHeart, AiOutlineMessage, AiFillHeart } from "react-icons/ai";
 import Avatar from "../Avatar";
 
@@ -40,10 +40,9 @@ const PostItem: FC<PostItemProps> = ({ data, userId }) => {
     [currentUser, loginModal, toggleLike]
   );
 
-  const createdAt = useMemo(() => {
-    if (!data?.createdAt) return null;
-    return formatDistanceToNowStrict(new Date(data.createdAt));
-  }, [data?.createdAt]);
+  const createdAt = data?.createdAt
+    ? formatDistanceToNowStrict(new Date(data.createdAt))
+    : null;
 
   const LikeIcon = hasLiked ? AiFillHeart : AiOutlineHeart;
   return (
