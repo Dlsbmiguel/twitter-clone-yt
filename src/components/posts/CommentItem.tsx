@@ -1,6 +1,6 @@
 import { formatDistanceToNowStrict } from "date-fns";
 import { useRouter } from "next/router";
-import { FC, useCallback, useMemo } from "react";
+import { FC, useCallback } from "react";
 import Avatar from "../Avatar";
 
 interface CommentItemProps {
@@ -19,13 +19,9 @@ const CommentItem: FC<CommentItemProps> = ({ data }) => {
     [router, data.user.id]
   );
 
-  const createdAt = useMemo(() => {
-    if (!data?.createdAt) {
-      return null;
-    }
-
-    return formatDistanceToNowStrict(new Date(data.createdAt));
-  }, [data?.createdAt]);
+  const createdAt = data?.createdAt
+    ? formatDistanceToNowStrict(new Date(data.createdAt))
+    : null;
 
   return (
     <div className="p-5 transition border-b cursor-pointer border-neutral-800 hover:bg-neutral-900">

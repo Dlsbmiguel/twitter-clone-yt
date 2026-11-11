@@ -11,7 +11,7 @@ export default async function handler(
   }
 
   try {
-    const { currentUser } = await serverAuth(req);
+    const { currentUser } = await serverAuth(req, res);
     // this body comes from prisma schema
     const { body } = req.body;
     const { postId } = req.query;
